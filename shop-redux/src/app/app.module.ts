@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { appReducers } from './store/state';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './pages/product/product.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductComponent
+    ProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
