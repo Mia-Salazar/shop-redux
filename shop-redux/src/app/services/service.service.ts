@@ -20,13 +20,17 @@ export class ServiceService {
 
   getBooks(){
     return this.http.get(`${this.url}/book`).pipe(
-      map(r => r)
+      map((resp: any) =>{
+        return resp['docs']
+       })
     );
   }
 
   getMovies(){
     return this.http.get(`${this.url}/movie`, { headers: this.setheader() }).pipe(
-      map(r => r)
+      map((resp: any) =>{
+        return resp['docs']
+       })
     );
   }
 }
