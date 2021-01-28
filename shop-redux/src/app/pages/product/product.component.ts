@@ -32,4 +32,7 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  getRandomItem() {
+  }
+
 }
