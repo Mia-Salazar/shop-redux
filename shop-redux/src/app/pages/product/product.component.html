@@ -1,1 +1,26 @@
-<p>product works!</p>
+<section class="px-4 bg-yellow-100 pb-24">
+    <div class="lg:max-w-4xl lg:mx-auto">
+        <div class="md:flex mb-6 md:pt-8 lg:pt-24 justify-between items-center ">
+            <div>
+                <h1 class="max-w-xs text-3xl titles-font font-bold text-yellow-700 pt-6 md:pt-0">El camino sigue y sigue
+                    desde la puerta.
+                    El camino ha ido muy lejos,
+                    y que otros lo sigan si pueden.</h1>
+    
+                <h2 class="max-w-xs text-1xl mt-4 mb-4 md:mb-0 text-gray-800">Sigue tu camino con los mejores artículos de El Señor de los Anillos</h2>
+    
+            </div>
+            <figure class="m-0 img-box">
+                <img class="" src="https://images.unsplash.com/photo-1523593288094-3ccfb6b2c192?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=357&q=80" alt=""/>
+            </figure>
+        </div>
+        <h3 class="text-4xl mt-12 mb-6 titles-font text-yellow-700">Books</h3>
+        <div class="md:flex md:flex-wrap">
+            <app-card *ngFor="let book of books" class="w-100 md:w-1/2" [name]="book.name" [available]="false"></app-card>
+        </div>
+        <h3 class="text-4xl mt-12 mb-6 titles-font text-yellow-700">Movies</h3>
+        <div class="md:flex md:flex-wrap">
+            <app-card *ngFor="let movie of movies"class="w-100 md:w-1/2" [price]="movie.runtimeInMinutes" [name]="movie.name" [available]="true"></app-card>
+        </div>
+    </div>
+</section>
