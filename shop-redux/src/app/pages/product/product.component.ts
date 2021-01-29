@@ -31,8 +31,4 @@ export class ProductComponent implements OnInit {
       this.movies = r;
     })
   }
-
-  getRandomItem() {
-  }
-
 }

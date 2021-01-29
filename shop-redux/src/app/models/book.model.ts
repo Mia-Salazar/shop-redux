@@ -1,4 +1,4 @@
 export class BookModel {
-    id: string;
+    _id: string;
     name: string;
 }

@@ -18,7 +18,10 @@
       </div>
       <div class="flex space-x-3 text-sm font-medium mt-6">
         <div class="flex-auto flex space-x-3">
-          <button [disabled]="!available" class="w-1/2 hover:bg-green-800 bg-yellow-700 text-white flex py-2 items-center justify-center rounded-md border border-gray-300" type="button">Añadir a la cesta</button>
+            <button [disabled]="!available" (click)="add()" class="w-1/2 hover:bg-green-800 bg-yellow-700 text-white flex py-2 items-center justify-center rounded-md border border-gray-300" type="button">
+               <span *ngIf="!loading">Añadir a la cesta</span>
+               <span *ngIf="loading" class="animate-ping">...</span>
+            </button>
         </div>
       </div>
     </div>

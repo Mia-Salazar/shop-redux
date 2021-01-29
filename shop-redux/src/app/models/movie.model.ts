@@ -7,4 +7,8 @@ export class MovieModel {
     rottenTomatesScore: number;
     runtimeInMinutes: number;
     _id: string;
+
+    constructor(_id: string){
+        this._id = _id;
+    }
 }
