@@ -18,18 +18,26 @@ export class ServiceService {
     })
   }
 
-  getBooks(){
+  getBooks() {
     return this.http.get(`${this.url}/book`).pipe(
       map((resp: any) =>{
-        return resp['docs']
+        return resp['docs'];
        })
     );
   }
 
-  getMovies(){
+  getMovies() {
     return this.http.get(`${this.url}/movie`, { headers: this.setheader() }).pipe(
       map((resp: any) =>{
-        return resp['docs']
+        return resp['docs'];
+       })
+    );
+  }
+
+  getMovie(id: string) {
+    return this.http.get(`${this.url}/movie/${id}`, { headers: this.setheader() }).pipe(
+      map((resp: any) =>{
+        return resp['docs'][0];
        })
     );
   }
