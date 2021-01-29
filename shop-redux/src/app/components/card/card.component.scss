@@ -4,5 +4,10 @@
     &:hover {
         box-shadow: 10px 10px 0px 0px rgba(192,83,9,1);
     }
+
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
 }
 
