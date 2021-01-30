@@ -9,13 +9,15 @@ import { appReducers } from './store/state';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './pages/product/product.component';
 import { CardComponent } from './components/card/card.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductComponent,
-    CardComponent
+    CardComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
