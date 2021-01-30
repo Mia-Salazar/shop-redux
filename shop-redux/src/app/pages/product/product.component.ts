@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { BookModel } from 'src/app/models/book.model';
 import { MovieModel } from 'src/app/models/movie.model';
 import { ServiceService } from 'src/app/services/service.service';
+import { AppState } from 'src/app/store/state';
+import { loadBooks } from '../../store/actions/books.actions';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +16,7 @@ export class ProductComponent implements OnInit {
   books: BookModel[];
   movies: MovieModel[];
 
-  constructor(private service: ServiceService) { }
+  constructor(private service: ServiceService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -21,9 +24,13 @@ export class ProductComponent implements OnInit {
   }
 
   getBooks() {
-    return this.service.getBooks().subscribe(r => {
-      this.books = r;
+    this.store.dispatch(loadBooks());
+    this.store.select('books').subscribe((state: any) => {
+      this.books = state.books;
     })
+    // return this.service.getBooks().subscribe(r => {
+    //   this.books = r;
+    // })
   }
 
   getMovies() {
