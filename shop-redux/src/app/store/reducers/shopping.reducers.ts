@@ -4,11 +4,11 @@ import { add, erase } from '../actions/shopping.actions';
 
 export const initialState: MovieModel[] = [];
 
-const _shoppingReducer = createReducer(initialState,
-  on(add, (state, {name, _id, price} )=> ({...state, movie: [...name, _id, price]})),
+const _shoppingReducer = createReducer(
+  initialState,
+  on(add, (state, {movie}) => [...state, new MovieModel(movie._id, movie.name, movie.runtimeInMinutes)]),
   on(erase, (state, {_id}) => state.filter (el => el._id !== _id)),
-);
-
+)
 
 // Saving just the ID in the store
 // export const initialState: MovieModel[] = [];

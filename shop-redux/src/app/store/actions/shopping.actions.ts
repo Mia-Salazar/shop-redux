@@ -4,7 +4,7 @@ import { MovieModel } from 'src/app/models/movie.model';
 
 export const add = createAction (
     'add',
-    props<{ _id: string, name: string, price: number }>()
+    props<{ movie: MovieModel }>()
 );
 
 export const erase = createAction (
