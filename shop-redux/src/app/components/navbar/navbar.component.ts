@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ServiceService } from 'src/app/services/service.service';
 
+import { MovieModel } from 'src/app/models/movie.model';
+import { ServiceService } from 'src/app/services/service.service';
 import { add } from '../../store/actions/shopping.actions';
 import { AppState } from '../../store/state';
 
@@ -36,8 +37,13 @@ export class NavbarComponent implements OnInit {
 
   getProduct(id: string) {
     this.service.getMovie(id).subscribe(r => {
+      const movie: MovieModel = {
+        name: r.name,
+        _id: r.id,
+        runtimeInMinutes: r.price
+      }
       this.number++;
-      this.store.dispatch(add({_id: r._id}))
+      this.store.dispatch(add({movie}))
     })
   }
 }

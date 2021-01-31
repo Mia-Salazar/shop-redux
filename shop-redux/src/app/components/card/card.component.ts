@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { waiting, stopWaiting } from '../../store/actions/ui.actions';
 import { add } from '../../store/actions/shopping.actions';
 import { AppState } from '../../store/state';
+import { MovieModel } from 'src/app/models/movie.model';
 
 @Component({
   selector: 'app-card',
@@ -29,10 +30,15 @@ export class CardComponent implements OnInit {
   }
 
   add(): void {
+    const movie: MovieModel = {
+      name: this.name,
+      _id: this.id,
+      runtimeInMinutes: this.price
+    }
     let id = Math.floor(Math.random() * 10000).toString();
     localStorage.setItem(id, this.id)
     this.store.dispatch(waiting())
-    this.store.dispatch(add({_id: this.id}))
+    this.store.dispatch(add({movie}))
     this.store.dispatch(stopWaiting())
   }
 }
