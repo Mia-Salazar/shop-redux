@@ -8,7 +8,9 @@ export class MovieModel {
     runtimeInMinutes: number;
     _id: string;
 
-    constructor(_id: string){
+    constructor(_id: string, name: string, price: number){
         this._id = _id;
+        this.name = name;
+        this.runtimeInMinutes = price;
     }
 }

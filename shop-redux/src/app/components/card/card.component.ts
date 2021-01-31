@@ -32,7 +32,7 @@ export class CardComponent implements OnInit {
     let id = Math.floor(Math.random() * 10000).toString();
     localStorage.setItem(id, this.id)
     this.store.dispatch(waiting())
-    this.store.dispatch(add({_id: this.id}))
+    this.store.dispatch(add({_id: this.id, name: this.name, price: this.price}))
     this.store.dispatch(stopWaiting())
   }
 }

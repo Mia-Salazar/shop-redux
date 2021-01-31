@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
   getProduct(id: string) {
     this.service.getMovie(id).subscribe(r => {
       this.number++;
-      this.store.dispatch(add({_id: r._id}))
+      this.store.dispatch(add({_id: r._id,  name: r.name, price: r.runtimeInMinutes}))
     })
   }
 }
