@@ -1,4 +1,5 @@
 .img-box {
-    box-shadow: 10px 10px 0px 0px rgba(192,83,9,1);
-    box-shadow: 10px 10px 0px 0px rgba(6,85,70,1);
+    @media (min-width: 768px) {
+        box-shadow: 10px 10px 0px 0px rgba(6,85,70,1);
+    }
 }

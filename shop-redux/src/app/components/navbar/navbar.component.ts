@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
           for (const item in items) {
             this.getProduct(items[item]);
           };
-          //this.store.select('shopping').subscribe(state => console.log(state))
         }
       }
     })

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { MovieModel } from 'src/app/models/movie.model';
+
+import { AppState } from 'src/app/store/state';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  carts: MovieModel[];
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.getCart();
   }
 
+  getCart(): void {
+    this.store.subscribe(state => {
+      //this.carts = state;
+      console.log(state)
+    })
+  }
 }
