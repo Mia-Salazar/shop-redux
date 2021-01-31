@@ -1,0 +1,19 @@
+<article class="flex p-4 space-x-4 border rounded-lg bg-white">
+    <div class="min-w-0 relative flex-auto sm:pr-20 lg:pr-0 xl:pr-20">
+        <h2 class="text-base sm:text-lg lg:text-base xl:text-lg font-semibold text-black mb-0.5 truncate">{{item.name}}</h2>
+        <div class="flex flex-wrap text-sm font-medium whitespace-pre">
+            <div class="md:flex top-0 right-0 rounded-full bg-amber-50 text-amber-900 px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1">
+                <div>
+                    <h3>Precio por unidad: {{item.runtimeInMinutes}}</h3>
+                    <h3>Precio total: {{item.total}}</h3>
+                </div>
+                <div>
+                    <p>x {{item.quantity}}</p>
+                </div>
+            </div>
+            <div class="flex justify-end w-full mt-12">
+                <button class="px-6 hover:bg-red-900 bg-red-700 text-white flex py-2 items-center justify-center rounded-md border border-gray-300">Eliminar todo</button>
+            </div>
+        </div>
+    </div>
+</article>

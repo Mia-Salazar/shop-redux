@@ -28,6 +28,8 @@ export class ProductComponent implements OnInit {
     this.store.select('books').subscribe((state: any) => {
       this.books = state.books;
     })
+
+    //The redux effect is the same as
     // return this.service.getBooks().subscribe(r => {
     //   this.books = r;
     // })
