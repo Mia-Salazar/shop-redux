@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(private store: Store<AppState>, private service: ServiceService) { }
 
   ngOnInit(): void {
-    this.getNumber();
+    //this.getNumber();
   }
 
   getNumber() {
@@ -40,7 +40,8 @@ export class NavbarComponent implements OnInit {
       const movie: MovieModel = {
         name: r.name,
         _id: r.id,
-        runtimeInMinutes: r.price
+        runtimeInMinutes: r.price,
+        quantity: 0
       }
       this.number++;
       this.store.dispatch(add({movie}))

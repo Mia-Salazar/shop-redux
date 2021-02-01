@@ -19,8 +19,11 @@ export class CartComponent implements OnInit {
   }
 
   getCart(): void {
-    this.store.subscribe(state => {
+    this.store.select('shopping').subscribe(state => {
       //this.carts = state;
+      // .forEach(element => {
+        
+      // });
       console.log(state)
     })
   }
