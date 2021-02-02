@@ -43,17 +43,20 @@ export class CardComponent implements OnInit {
     }
     const found = this.list.find(element => element._id === this.id);
     if (found) {
+      let item = JSON.parse(localStorage.getItem(this.id)!);
+      localStorage.removeItem(this.id);
+      item.quantity++;
+      localStorage.setItem(this.id, JSON.stringify(item));
       let newQuantity = found.quantity;
       newQuantity++;
       this.store.dispatch(waiting())
       this.store.dispatch(addMore({_id: this.id, quantity: newQuantity}))
       this.store.dispatch(stopWaiting())
     } else {
+      localStorage.setItem(this.id, JSON.stringify(movie));
       this.store.dispatch(waiting())
       this.store.dispatch(add({movie}))
       this.store.dispatch(stopWaiting())
     }
-    // let id = Math.floor(Math.random() * 10000).toString();
-    // localStorage.setItem(id, this.id)
   }
 }
