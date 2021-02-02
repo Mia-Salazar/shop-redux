@@ -13,37 +13,33 @@ import { AppState } from '../../store/state';
 })
 export class NavbarComponent implements OnInit {
   @Input() number = 0;
+  list: MovieModel[];
   
   constructor(private store: Store<AppState>, private service: ServiceService) { }
 
   ngOnInit(): void {
+    this.store.select('shopping').subscribe((state: any) => {
+      this.list = state;
+    })
     this.getNumber();
+
   }
 
   getNumber() {
-    this.store.select('shopping').subscribe(state => {
-      if (state.length > 0) {
-        this.number = state.length;
-      } else {
-        let items = { ...localStorage };
-        if (localStorage.length !== 0) {
-          for (const item in items) {
-            //this.getProduct(items[item]);
-          };
-        }
+    if (this.list.length > 0) {
+      for (const item in this.list) {
+        this.number = this.number + this.list[item].quantity;
+      };
+    } else {
+      let items = { ...localStorage };
+      if (localStorage.length !== 0) {
+        for (const item in items) {
+          let temp: MovieModel = JSON.parse(items[item]);
+          this.number = this.number + temp.quantity;
+          this.store.dispatch(add({movie: temp}))
+        };
       }
-    })
+    }
   }
 
-  // getProduct(id: string) {
-  //   this.service.getMovie(id).subscribe(r => {
-  //     const movie: MovieModel = {
-  //       name: r.name,
-  //       _id: r.id,
-  //       runtimeInMinutes: r.price,
-  //     }
-  //     this.number++;
-  //     this.store.dispatch(add({movie}))
-  //   })
-  // }
 }
