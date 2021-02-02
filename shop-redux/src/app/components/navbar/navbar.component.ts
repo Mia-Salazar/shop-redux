@@ -28,22 +28,22 @@ export class NavbarComponent implements OnInit {
         let items = { ...localStorage };
         if (localStorage.length !== 0) {
           for (const item in items) {
-            this.getProduct(items[item]);
+            //this.getProduct(items[item]);
           };
         }
       }
     })
   }
 
-  getProduct(id: string) {
-    this.service.getMovie(id).subscribe(r => {
-      const movie: MovieModel = {
-        name: r.name,
-        _id: r.id,
-        runtimeInMinutes: r.price
-      }
-      this.number++;
-      this.store.dispatch(add({movie}))
-    })
-  }
+  // getProduct(id: string) {
+  //   this.service.getMovie(id).subscribe(r => {
+  //     const movie: MovieModel = {
+  //       name: r.name,
+  //       _id: r.id,
+  //       runtimeInMinutes: r.price,
+  //     }
+  //     this.number++;
+  //     this.store.dispatch(add({movie}))
+  //   })
+  // }
 }
