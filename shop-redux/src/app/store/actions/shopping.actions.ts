@@ -7,6 +7,11 @@ export const add = createAction (
     props<{ movie: MovieModel }>()
 );
 
+export const addMore = createAction (
+    'addMore',
+    props<{ _id: string, quantity: number }>()
+);
+
 export const erase = createAction (
     'erase',
     props<{ _id: string}>()
