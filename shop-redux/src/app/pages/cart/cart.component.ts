@@ -11,16 +11,29 @@ import { AppState } from 'src/app/store/state';
 })
 export class CartComponent implements OnInit {
   carts: MovieModel[];
+  subtotal: number = 0;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.getCart();
+    this.getTotal();
   }
 
   getCart(): void {
     this.store.select('shopping').subscribe(state => {
       this.carts = state;
     })
+  }
+
+  buy() {
+    window.alert('Gracias por comprar');
+  }
+
+  getTotal() {
+    this.carts.forEach(element => {
+      let temp = element.runtimeInMinutes * element.quantity;
+      this.subtotal = this.subtotal + temp;
+    });
   }
 }
