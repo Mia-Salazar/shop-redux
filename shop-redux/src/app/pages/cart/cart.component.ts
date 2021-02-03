@@ -19,9 +19,8 @@ export class CartComponent implements OnInit {
   }
 
   getCart(): void {
-    this.store.subscribe(state => {
-      //this.carts = state;
-      console.log(state)
+    this.store.select('shopping').subscribe(state => {
+      this.carts = state;
     })
   }
 }

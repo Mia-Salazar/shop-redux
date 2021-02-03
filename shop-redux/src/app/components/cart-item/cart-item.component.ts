@@ -8,10 +8,12 @@ import { CartItemModel } from 'src/app/models/cartItem.model';
 })
 export class CartItemComponent implements OnInit {
   @Input() item: CartItemModel;
+  total: number;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.total = this.item.runtimeInMinutes * this.item.quantity;
   }
 
 }
