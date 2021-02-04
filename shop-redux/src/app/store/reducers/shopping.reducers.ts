@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { MovieModel } from 'src/app/models/movie.model';
-import { add, erase, addMore } from '../actions/shopping.actions';
+import { add, erase, addMore, removeAll } from '../actions/shopping.actions';
 
 export const initialState: MovieModel[] = [];
 
@@ -17,6 +17,7 @@ const _shoppingReducer = createReducer(
       }
     })
   }),
+  on(removeAll, state => (initialState))
 )
 
 // Saving just the ID in the store
