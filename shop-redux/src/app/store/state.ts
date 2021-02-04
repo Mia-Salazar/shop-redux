@@ -4,16 +4,18 @@ import { waitingReducer, StateWaiting } from './reducers/ui.reducers';
 import { shoppingReducer } from './reducers/shopping.reducers';
 import { BookReducers, StateBook } from './reducers/books.reducers';
 import { MovieModel } from '../models/movie.model';
-import { BookModel } from '../models/book.model';
+import { quantityReducer } from './reducers/quantity.reducers';
 
 export interface AppState {
     waiting: StateWaiting,
     shopping: MovieModel[],
-    books: StateBook
+    books: StateBook,
+    quantity: number
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
     waiting: waitingReducer,
     shopping: shoppingReducer,
-    books: BookReducers
+    books: BookReducers,
+    quantity: quantityReducer
 }

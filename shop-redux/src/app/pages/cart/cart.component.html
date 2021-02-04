@@ -1,10 +1,10 @@
 <section class="px-4 bg-yellow-100 pb-24 pt-24">
     <div class="lg:max-w-4xl lg:mx-auto">
         <h1 class="text-4xl mt-6 mb-6 titles-font text-yellow-700">Carro de la compra</h1>
-        <div class="" *ngIf="carts !== null">
+        <div class="" *ngIf="!empty">
             <app-cart-item *ngFor="let cart of carts" [item]="cart"></app-cart-item>
         </div>
-        <div class="mb-6" *ngIf="carts === null || subtotal === 0">
+        <div class="mb-6" *ngIf="empty">
             <p class="mb-4">¿Todavía no has comprado nada? Visita nuestra tienda</p>
             <a routerLink="/" class="px-3 py-2 bg-yellow-700 hover:bg-yellow-900 rounded-lg text-white">Tienda</a>
         </div>
@@ -12,7 +12,7 @@
             <h4>Total: </h4>
             <h4>{{subtotal}} €</h4>
         </div>
-        <button *ngIf="subtotal > 0" [disabled]="loading" class="px-6 hover:bg-green-900 disabled:bg-green-900 text-white bg-green-800 hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="buy()">
+        <button *ngIf="!empty" [disabled]="loading" class="px-6 hover:bg-green-900 disabled:bg-green-900 text-white bg-green-800 hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="buy()">
             <span *ngIf="!loading">Comprar</span>
             <span *ngIf="loading" class="animate-spin h-5 w-5 mr-3 text-white animate-ping leading-3" viewBox="0 0 24 24">
                 ...
