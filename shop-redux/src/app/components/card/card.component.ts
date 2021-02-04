@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { waiting, stopWaiting } from '../../store/actions/ui.actions';
 import { add, addMore } from '../../store/actions/shopping.actions';
+import { addQuantity } from '../../store/actions/quantity.actions';
 import { AppState } from '../../store/state';
 import { MovieModel } from 'src/app/models/movie.model';
 
@@ -35,6 +36,7 @@ export class CardComponent implements OnInit {
   }
 
   add(): void {
+    this.store.dispatch(addQuantity({number: 1}));
     const movie: MovieModel = {
       name: this.name,
       _id: this.id,

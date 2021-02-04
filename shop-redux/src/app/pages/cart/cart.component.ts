@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { MovieModel } from 'src/app/models/movie.model';
+import { removeAllQuantity } from 'src/app/store/actions/quantity.actions';
 import { stopWaiting, waiting } from 'src/app/store/actions/ui.actions';
 import { AppState } from 'src/app/store/state';
 import { removeAll } from '../../store/actions/shopping.actions';
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit {
   subtotal: number = 0;
   loading: boolean;
   subscription: Subscription;
+  empty = true;
 
   constructor(private store: Store<AppState>) {
     this.subscription = this.store.subscribe( ui => {
@@ -32,6 +34,9 @@ export class CartComponent implements OnInit {
   getCart(): void {
     this.store.select('shopping').subscribe(state => {
       this.carts = state;
+      if (this.carts.length > 0) {
+        this.empty = false;
+      }
     })
   }
 
@@ -39,9 +44,11 @@ export class CartComponent implements OnInit {
     this.store.dispatch(waiting());
     window.alert('Gracias por comprar');
     this.store.dispatch(removeAll());
+    this.store.dispatch(removeAllQuantity());
     this.subtotal = 0;
     localStorage.clear();
     this.store.dispatch(stopWaiting());
+    this.empty = true;
   }
 
   getTotal() {

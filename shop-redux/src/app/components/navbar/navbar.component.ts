@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { MovieModel } from 'src/app/models/movie.model';
 import { ServiceService } from 'src/app/services/service.service';
+import { addQuantity } from 'src/app/store/actions/quantity.actions';
 import { add } from '../../store/actions/shopping.actions';
 import { AppState } from '../../store/state';
 
@@ -18,19 +19,17 @@ export class NavbarComponent implements OnInit {
   constructor(private store: Store<AppState>, private service: ServiceService) { }
 
   ngOnInit(): void {
+    this.store.select('quantity').subscribe((state: any) => {
+      this.number = state;
+    })
     this.store.select('shopping').subscribe((state: any) => {
       this.list = state;
+      this.getNumber()
     })
-    this.getNumber();
-
   }
 
   getNumber() {
-    if (this.list.length > 0) {
-      for (const item in this.list) {
-        this.number = this.number + this.list[item].quantity;
-      };
-    } else {
+    if (this.list.length === 0) {
       let items = { ...localStorage };
       if (localStorage.length !== 0) {
         for (const item in items) {
@@ -38,8 +37,8 @@ export class NavbarComponent implements OnInit {
           this.number = this.number + temp.quantity;
           this.store.dispatch(add({movie: temp}))
         };
+        this.store.dispatch(addQuantity({number: this.number}))
       }
     }
   }
-
 }
