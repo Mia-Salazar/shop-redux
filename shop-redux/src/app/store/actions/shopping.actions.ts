@@ -17,6 +17,9 @@ export const erase = createAction (
     props<{ _id: string}>()
 );
 
+export const removeAll = createAction(
+    'removeAll');
+
 //Using just the ID in the store
 // export const add = createAction (
 //     'add',
