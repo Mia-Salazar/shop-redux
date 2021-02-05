@@ -8,6 +8,7 @@ export const addQuantity = createAction (
 
 export const eraseQuantity = createAction (
     'eraseQuantity',
+    props<{ number: number }>()
 );
 
 export const removeAllQuantity = createAction(
