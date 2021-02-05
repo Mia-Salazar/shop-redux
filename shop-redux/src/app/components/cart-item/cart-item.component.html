@@ -8,13 +8,13 @@
                     <h3>Precio total: {{total}} €</h3>
                 </div>
                 <div class="flex items-center">
-                    <button class="px-4 py-2 bg-yellow-700 hover:bg-yellow-900 rounded-lg text-white font-bold">-</button>
+                    <button class="px-4 py-2 bg-yellow-700 hover:bg-yellow-900 rounded-lg text-white font-bold" (click)="oneLess()">-</button>
                     <p class="mx-4 mb-0">x {{item.quantity}}</p>
-                    <button class="px-3 py-2 bg-yellow-700 hover:bg-yellow-900 rounded-lg text-white font-bold">+</button>
+                    <button class="px-3 py-2 bg-yellow-700 hover:bg-yellow-900 rounded-lg text-white font-bold" (click)="oneMore()">+</button>
                 </div>
             </div>
             <div class="flex justify-end w-full mt-8">
-                <button class="px-6 hover:bg-yellow-700 text-yellow-700 border-yellow-700   hover:text-white flex py-2 items-center justify-center rounded-md border">Eliminar todo</button>
+                <button class="px-6 hover:bg-yellow-700 text-yellow-700 border-yellow-700   hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="eraseAll()">Eliminar todo</button>
             </div>
         </div>
     </div>

@@ -12,10 +12,16 @@ export const addMore = createAction (
     props<{ _id: string, quantity: number }>()
 );
 
-export const erase = createAction (
-    'erase',
+export const reduce = createAction (
+    'reduce',
+    props<{ _id: string, number: number}>()
+);
+
+export const deleteItem = createAction (
+    'deleteItem',
     props<{ _id: string}>()
 );
+
 
 export const removeAll = createAction(
     'removeAll');

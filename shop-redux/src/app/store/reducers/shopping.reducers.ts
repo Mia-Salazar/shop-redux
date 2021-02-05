@@ -1,13 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 import { MovieModel } from 'src/app/models/movie.model';
-import { add, erase, addMore, removeAll } from '../actions/shopping.actions';
+import { add, reduce, addMore, removeAll, deleteItem } from '../actions/shopping.actions';
 
 export const initialState: MovieModel[] = [];
 
 const _shoppingReducer = createReducer(
   initialState,
   on(add, (state, {movie}) => [...state, new MovieModel(movie._id, movie.name, movie.runtimeInMinutes, movie.quantity)]),
-  on(erase, (state, {_id}) => state.filter (el => el._id !== _id)),
+  on(reduce, (state, {_id, number}) => {
+    return state.map (el => {
+      if (el._id === _id){
+        return {...el, quantity: number}
+      }
+      return el;
+    })
+  }),
+  on(deleteItem, (state, {_id}) => state.filter (el => el._id !== _id)),
   on(addMore, (state, {_id, quantity}) => {
     return state.map (movie => {
       if (movie._id === _id){
@@ -19,6 +27,10 @@ const _shoppingReducer = createReducer(
   }),
   on(removeAll, state => (initialState))
 )
+
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
 
 // Saving just the ID in the store
 // export const initialState: MovieModel[] = [];

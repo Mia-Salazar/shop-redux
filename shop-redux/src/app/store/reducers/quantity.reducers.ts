@@ -6,7 +6,7 @@ export const initialStateQuantity = 0;
 const _quantityReducer = createReducer(
   initialStateQuantity,
   on(addQuantity, (state, {number}) => state + number),
-  on(eraseQuantity, state => state - 1),
+  on(eraseQuantity, (state, {number}) => state - number),
   on(removeAllQuantity, state => (initialStateQuantity))
 )
  
