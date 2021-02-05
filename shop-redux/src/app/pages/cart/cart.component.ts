@@ -40,9 +40,11 @@ export class CartComponent implements OnInit {
     })
   }
 
-  buy() {
+  action(type: string) {
     this.store.dispatch(waiting());
-    window.alert('Gracias por comprar');
+    if (type === 'buy') {
+      window.alert('Gracias por comprar');
+    }
     this.store.dispatch(removeAll());
     this.store.dispatch(removeAllQuantity());
     this.subtotal = 0;

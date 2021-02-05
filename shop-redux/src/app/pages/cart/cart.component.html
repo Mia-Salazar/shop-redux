@@ -12,11 +12,20 @@
             <h4>Total: </h4>
             <h4>{{subtotal}} €</h4>
         </div>
-        <button *ngIf="!empty" [disabled]="loading" class="px-6 hover:bg-green-900 disabled:bg-green-900 text-white bg-green-800 hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="buy()">
-            <span *ngIf="!loading">Comprar</span>
-            <span *ngIf="loading" class="animate-spin h-5 w-5 mr-3 text-white animate-ping leading-3" viewBox="0 0 24 24">
-                ...
-            </span>
-        </button>
+        <div class="flex justify-between">
+            <button *ngIf="!empty" [disabled]="loading" class="px-6 hover:bg-green-900 disabled:bg-green-900 text-white bg-green-800 hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="action('buy')">
+                <span *ngIf="!loading">Comprar</span>
+                <span *ngIf="loading" class="animate-spin h-5 w-5 mr-3 text-white animate-ping leading-3" viewBox="0 0 24 24">
+                    ...
+                </span>
+            </button>
+            <button *ngIf="!empty" [disabled]="loading" class="px-6 hover:bg-yellow-900 disabled:bg-yellow-900 text-white bg-yellow-700 hover:text-white flex py-2 items-center justify-center rounded-md border" (click)="action('deleteAll')">
+                <span *ngIf="!loading">Eliminar todo</span>
+                <span *ngIf="loading" class="animate-spin h-5 w-5 mr-3 text-white animate-ping leading-3" viewBox="0 0 24 24">
+                    ...
+                </span>
+            </button>
+
+        </div>
     </div>
 </section>
